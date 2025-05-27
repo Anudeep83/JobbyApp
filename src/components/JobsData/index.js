@@ -274,23 +274,25 @@ class JobsDetails extends Component {
     }
   }
 
-  renderALlData = () => {
-    const {totallJobs, locationListsContains} = this.state
-    console.log(locationListsContains)
+ renderALlData = () => {
+  const {totallJobs, locationListsContains} = this.state
 
-    const detailsForLocation = totallJobs.filter(each =>
-      locationListsContains.includes(each.location),
-    )
-    console.log(detailsForLocation)
+  const filteredJobs =
+    locationListsContains.length > 0
+      ? totallJobs.filter(each =>
+          locationListsContains.includes(each.location),
+        )
+      : totallJobs
 
-    return (
-      <div className="AllDataOfItems">
-        {totallJobs.map(each => (
-          <JobCard each={each} key={each.id} />
-        ))}
-      </div>
-    )
-  }
+  return (
+    <div className="AllDataOfItems">
+      {filteredJobs.map(each => (
+        <JobCard each={each} key={each.id} />
+      ))}
+    </div>
+  )
+}
+
 
   DataNotFound = () => (
     <div className="DataNot">
@@ -324,9 +326,7 @@ class JobsDetails extends Component {
                   e.preventDefault()
                   this.jobsData()
                 }}
-              >
-
-              </form>
+              ></form>
             </div>
 
             {DataOfAllFetching}
@@ -339,7 +339,6 @@ class JobsDetails extends Component {
   failureView = () => (
     <div>
       <div>
-
         <img
           src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
           alt="failure view"
@@ -425,15 +424,16 @@ class JobsDetails extends Component {
                   {locationData.map(each => (
                     <li key={each.id}>
                       <input
-                        id={each.id}
+                        id={`location-${each.id}`}
                         value={each.location}
                         type="checkbox"
                         onChange={this.locationChange}
                       />
-                      <p htmlFor={each.id}> {each.location} </p>
+                      <label htmlFor={`location-${each.id}`}>{each.location}</label>
                     </li>
                   ))}
                 </ul>
+
               </div>
             </div>
           </div>

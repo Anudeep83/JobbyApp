@@ -16,6 +16,55 @@
   flex-direction: column;
   justify-content: space-around;
 }
+.BgForHeader {
+  position: sticky;
+  top: 0;
+  background-color: #2c364c;
+  z-index: 100;
+}
+
+.sticky-sidebar {
+  position: sticky;
+  top: 80px; /* height of the header */
+  align-self: flex-start;
+}
+
+.flexingItemsJobs {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+}
+
+.ProfileSide {
+  width: 300px;
+  background-color: #1f1f2f;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+}
+
+.ChecksData {
+  flex-grow: 1;
+}
+
+.inputSearch {
+  padding: 10px;
+  width: 70%;
+  font-size: 16px;
+}
+
+.ButtonSearch {
+  padding: 10px;
+  background-color: #6366f1;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.AllDataOfItems {
+  margin-top: 20px;
+}
+
 .BgForDetailsOfJobs {
   padding: 12px;
   margin-bottom: 18px;
